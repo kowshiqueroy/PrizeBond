@@ -76,7 +76,7 @@ public class Excel extends Activity implements OnClickListener{
 
 
 
-                readExcelFile(this,"myExcel.xlsx",path);
+                readExcelFile(this,"myExcel.xlsx");
                 break;
         }
     }
@@ -250,7 +250,7 @@ public class Excel extends Activity implements OnClickListener{
         sheet1.setColumnWidth(2, (15 * 500));
 
         // Create a path where we will place our List of objects on external storage
-        File file = new File("/document/", fileName);
+        File file = new File(context.getExternalFilesDir(null), fileName);
         Log.d("getMSG", "saveExcelFile: ");
 
         try (FileOutputStream os = new FileOutputStream(file)) {
@@ -266,7 +266,7 @@ public class Excel extends Activity implements OnClickListener{
         return success;
     }
 
-    private static void readExcelFile(Context context, String filename, String path) {
+    private static void readExcelFile(Context context, String filename) {
 
         if (!isExternalStorageAvailable() || isExternalStorageReadOnly())
         {
@@ -276,7 +276,7 @@ public class Excel extends Activity implements OnClickListener{
 
         try{
             // Creating Input Stream
-            File file = new File(path, filename);
+            File file = new File(context.getExternalFilesDir(null), filename);
             FileInputStream myInput = new FileInputStream(file);
 
             // Create a POIFSFileSystem object
