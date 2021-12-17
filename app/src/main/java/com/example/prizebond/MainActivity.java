@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    Button c,s,a,r;
+    Button c,s,a,r,e;
     TextView t;
     public static String getInputAdmin;
     public static String getInput;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         a= findViewById(R.id.Admin);
         r= findViewById(R.id.Check);
         t= findViewById(R.id.text);
+        e= findViewById(R.id.Excel);
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -85,7 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                startActivity(new Intent(MainActivity.this, Excel.class));
+
+            }
+        });
 
 
 
